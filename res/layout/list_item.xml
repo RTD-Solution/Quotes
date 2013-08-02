@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLay"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backgroung_list_item"
+    android:gravity="fill_horizontal|center_vertical"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal|center_vertical"
+        android:orientation="vertical" >
+        
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal|center_vertical"
+        android:orientation="horizontal"  
+            >
+            <TextView
+                android:id="@+id/txtId"
+                style="@style/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="false"
+                android:text="11"
+                android:textColor="@android:color/black"
+                />
+                        <TextView
+                android:id="@+id/txtDate"
+                style="@style/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="false"
+                android:text="1900.05.06"
+                android:textColor="@android:color/black"
+                />
+                        
+                        <ToggleButton
+                            android:id="@+id/tbFav"
+        android:background="@android:drawable/btn_star_big_off"
+        android:textOn=""
+        android:textOff=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tool_item_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.92"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/txtTypeName"
+                style="@style/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="false"
+                android:text="1.5 км - Беларусьбанк"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

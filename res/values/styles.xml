@@ -1,0 +1,70 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="title">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+    
+        <style name="text_b">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+        <color name="defaultTextColor">#801231</color>
+    <color name="blueTextColor">#5a6b90</color>
+    <color name="grayColor">#efefef</color>
+    <color name="DarkGrayColor">#333333</color>
+    <color name="HelloColor">#222222</color>
+    <color name="pieGreen">#67cf28</color>
+    <color name="pieCyan">#28cf8e</color>
+    <color name="piePurple">#cd28cf</color>
+    <color name="pieBlue">#2867cf</color>
+    <color name="pieOrange">#f24f08</color>
+    <color name="pieMaroon">#cf284a</color>
+    <color name="pieBlack">#9e9e9e</color>
+    <color name="pieGray">#d6d6d6</color>
+    <color name="red">#90002b</color>
+    <color name="white">#ffffff</color>
+    <color name="separator">#cbcbcb</color>
+    <color name="white_gray">#f0f0f0</color>
+    
+    <color name="wtfPink">#ff66FF</color>
+    <color name="wtfGold">#FF9933</color>
+    <color name="wtfYelow">#FFFF66</color>
+    <color name="wtfGreen">#229a36</color>
+    <color name="wtfCyan">#66FFFF</color>
+    <color name="wtfLightGreen">#c6ff8f</color>
+    <color name="wtfBlue">#3366FF</color>
+    <color name="wtfSer">#9900FF</color>
+    <color name="wtfGray">#a9a9a9</color>
+    <color name="wtfLightGray">#cccccc</color>
+        <color name="wtfDarkGray">#474747</color>
+    
+</resources>

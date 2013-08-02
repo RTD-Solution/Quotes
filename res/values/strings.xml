@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Where To Find</string>
+    <string name="hello_world">Hello world!</string>
+   
+        <string name="str_Ok">ДА</string>
+    <string name="str_Canccel">НЕТ</string>
+        <string name="str_War">Внимание!</string>
+                <string name="strNotConn">Действие недоступно!\nПодключение не установлено</string>
+</resources>
