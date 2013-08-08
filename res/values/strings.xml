@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Where To Find</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Устами политиков</string>
+    <string name="settings">Настройки</string>
+    <string name="all_quotes">Все цитаты</string>
+    <string name="favorites">Избранное</string>
+    <string name="about">О программе</string>
+    
+    <string name="update">Обновление</string>
+    <string name="autoload">Автозагрузка цитат</string>
+    <string name="autoload_summary">Автоматически загружать цитаты при запуске приложения</string>
+    <string name="only_WiFi">Только в сетях Wi-Fi</string>
+    <string name="only_WiFi_summary">Автоматически загружать цитаты только при наличии подключения к сети Wi-Fi</string>
+    
+    <string name="font">Шрифт</string>
+    <string name="font_style">Стиль</string>
+    <string name="font_style_summary">Стиль шрифта, используемого в приложении</string>
+    <string name="font_size">Размер</string>
+    <string name="font_size_summary">Размер шрифта, используемого в приложении</string>
+    
+    <string name="theme">Внешний вид</string>
+    <string name="theme_style">Тема</string>
+    <string name="theme_style_summary">Тема, используемая в приложении</string>
    
-        <string name="str_Ok">ДА</string>
+    <string name="str_Ok">ДА</string>
     <string name="str_Canccel">НЕТ</string>
-        <string name="str_War">Внимание!</string>
-                <string name="strNotConn">Действие недоступно!\nПодключение не установлено</string>
+    <string name="str_War">Внимание!</string>
+    <string name="strNotConn">Действие недоступно!\nПодключение не установлено</string>
+    <string name="strHelp">Приложение блаблабла хочу бабла блаблабла прилоген офигенен</string>
+    <string name="strDeveloper">Приложение разработано компанией <a href="http://www.vk.com/mr.midnight">RTD Solution</a></string>
+    <string name="strMailUs">Написать разработчику</string>
+    <string name="strDonate">Поддержать проект материально</string>
+    <string name="strMark">Оценить приложение / оставить отзыв</string>
+
 </resources>

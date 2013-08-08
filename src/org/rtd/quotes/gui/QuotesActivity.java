@@ -1,51 +1,58 @@
 package org.rtd.quotes.gui;
 
 import org.rtd.quotes.component.AlertDialogExt;
-import org.rtd.quotes.gui.R;
 import org.rtd.quotes.gui.adapter.ViewPagerAdapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 public class QuotesActivity extends SherlockFragmentActivity implements
-	OnNavigationListener {
+	com.actionbarsherlock.ActionBarSherlock.OnOptionsItemSelectedListener {
 
     Context context;
-    ArrayAdapter adapter;
     final String LOG_TAG = "myLogs";
     LinearLayout lay1, lay2;
     ViewPager pager;
     Tab tab;
 
-    // @Override
-    // public boolean onOptionsItemSelected(MenuItem item) {
-    // item.setTitle("item");
-    // return super.onOptionsItemSelected(item);
-    //
-    // };
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+	// Intent intent = new Intent();
+	// if (item.getTitle().equals(R.string.settings))
+	// intent.setClass(context, SettingsActivity.class);
+	// else
+	// intent.setClass(context, HelpActivity.class);
+	// startActivity(intent);
+	return super.onOptionsItemSelected(item);
+
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-	menu.add("Настройки")
+	Intent intent = new Intent();
+	intent.setClass(context, SettingsActivity.class);
+	menu.add(R.string.settings)
+		.setIntent(intent)
 		.setIcon(R.drawable.spinner_ring)
 		.setShowAsAction(
 			MenuItem.SHOW_AS_ACTION_IF_ROOM
 				| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-	menu.add("О программе")
+	Intent intent0 = new Intent();
+	intent0.setClass(context, HelpActivity.class);
+	menu.add(R.string.about)
+		.setIntent(intent0)
 		.setIcon(R.drawable.spinner_ring)
 		.setShowAsAction(
 			MenuItem.SHOW_AS_ACTION_IF_ROOM
@@ -67,6 +74,7 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 	context = getSupportActionBar().getThemedContext();
 
 	getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+	getSupportActionBar().setTitle(R.string.app_name);
 
 	final ActionBar actionBar = getSupportActionBar();
 
@@ -102,13 +110,13 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 	    }
 	};
 
-	tab = actionBar.newTab().setText("Все цитаты")
+	tab = actionBar.newTab().setText(R.string.all_quotes)
 		.setTabListener(new FavoritesFragment())
 		.setIcon(R.drawable.spinner_ring);
 	tab.setTabListener(tabListener);
 	actionBar.addTab(tab);
 
-	tab = actionBar.newTab().setText("Избранное")
+	tab = actionBar.newTab().setText(R.string.favorites)
 		.setTabListener(new FavoritesFragment())
 		.setIcon(R.drawable.spinner_ring);
 	tab.setTabListener(tabListener);
@@ -131,11 +139,4 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 	dialog.show();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-	// TODO Auto-generated method stub
-	Toast.makeText(context, adapter.getItem(itemPosition).toString(),
-		Toast.LENGTH_LONG).show();
-	return false;
-    }
 }

@@ -2,7 +2,6 @@ package org.rtd.quotes.gui.adapter;
 
 import org.rtd.quotes.gui.AllQuotesFragment;
 import org.rtd.quotes.gui.FavoritesFragment;
-import org.rtd.quotes.gui.HelpFragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,7 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     // Declare the number of ViewPager pages
-    final int PAGE_COUNT = 3;
+    final int PAGE_COUNT = 2;
 
     public ViewPagerAdapter(FragmentManager fm) {
 	super(fm);
@@ -29,9 +28,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 	    FavoritesFragment settingsFragment = new FavoritesFragment();
 	    return settingsFragment;
 
-	case 2:
-	    HelpFragment helpFragment = new HelpFragment();
-	    return helpFragment;
 	}
 	return null;
     }
