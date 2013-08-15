@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fonts">
+        <item >Arial</item>
+        <item >Times New Roman</item>
+    </string-array>
+    
+    <string-array name="fonts_values">
+        <item >Arial</item>
+        <item >Times New Roman</item>
+    </string-array>
+    
+    <string-array name="font_size">
+        <item >10</item>
+        <item >12</item>
+        <item >14</item>
+        <item >16</item>
+        <item >18</item>
+    </string-array>
+    
+    <string-array name="font_size_values">
+        <item >10</item>
+        <item >12</item>
+        <item >14</item>
+        <item >16</item>
+        <item >18</item>
+    </string-array>
+    
+    <string-array name="theme_values">
+        <item >Темная</item>
+        <item >Светлая</item>
+    </string-array>
+    
+</resources>

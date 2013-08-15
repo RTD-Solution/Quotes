@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:title="@string/update">
+
+        <CheckBoxPreference
+                android:key="preference_autoload"
+                android:title="@string/autoload"
+                android:summary="@string/autoload_summary" />
+        
+        <CheckBoxPreference
+                android:key="preference_only_WiFi"
+                android:title="@string/only_WiFi"
+                android:dependency="preference_autoload"
+                android:summary="@string/only_WiFi_summary" />
+
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+            android:title="@string/font">
+
+        <ListPreference
+                android:key="font_style"
+                android:title="@string/font_style"
+                android:summary="@string/font_style_summary"
+                android:entries="@array/fonts"
+                android:entryValues="@array/fonts_values" />
+        
+		<ListPreference
+                android:key="font_size"
+                android:title="@string/font_size"
+                android:summary="@string/font_size_summary"
+                android:entries="@array/font_size"
+                android:entryValues="@array/font_size_values" />
+
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+            android:title="@string/theme">
+
+        <ListPreference
+                android:key="theme_style"
+                android:title="@string/theme_style"
+                android:summary="@string/theme_style_summary"
+                android:entries="@array/theme_values"
+                android:entryValues="@array/theme_values" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+ 

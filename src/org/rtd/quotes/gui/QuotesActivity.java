@@ -5,7 +5,10 @@ import org.rtd.quotes.gui.adapter.ViewPagerAdapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources.Theme;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -26,18 +29,6 @@ public class QuotesActivity extends SherlockFragmentActivity implements
     LinearLayout lay1, lay2;
     ViewPager pager;
     Tab tab;
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-	// Intent intent = new Intent();
-	// if (item.getTitle().equals(R.string.settings))
-	// intent.setClass(context, SettingsActivity.class);
-	// else
-	// intent.setClass(context, HelpActivity.class);
-	// startActivity(intent);
-	return super.onOptionsItemSelected(item);
-
-    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,6 +53,15 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+	SharedPreferences sp = PreferenceManager
+		.getDefaultSharedPreferences(getApplicationContext());
+
+	if (sp.getString("theme_style", "Темная").contains("Темная"))
+	    this.setTheme(R.style.Theme_Sherlock);
+	else
+	    this.setTheme(R.style.Theme_Sherlock_Light);
+
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.main);
 
@@ -137,6 +137,29 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 		    }
 		});
 	dialog.show();
+    }
+
+    @Override
+    public void onResume() {
+	SharedPreferences sp = PreferenceManager
+		.getDefaultSharedPreferences(getApplicationContext());
+
+	if (sp.getString("theme_style", "Темная").contains("Темная"))
+	    this.setTheme(R.style.Theme_Sherlock);
+	else
+	    this.setTheme(R.style.Theme_Sherlock_Light);
+
+	super.onResume();
+
+    }
+
+    @Override
+    protected void onApplyThemeResource(Theme theme, int resid, boolean first) {
+	// TODO Auto-generated method stub
+	startActivity(this.getIntent().setFlags(
+		Intent.FLAG_ACTIVITY_NO_ANIMATION));
+	finish();
+	super.onApplyThemeResource(theme, resid, first);
     }
 
 }
