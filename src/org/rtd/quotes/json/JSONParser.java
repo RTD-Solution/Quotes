@@ -6,28 +6,34 @@ import org.rtd.quotes.database.DAOObject;
 import org.rtd.quotes.database.DataBaseAdapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class JSONParser {
 	private JSONObject jObject;
 	DataBaseAdapter DBA;
 	Context context;
 	DAOObject daoObj;
-	//final String  DB_EXIST = "DB_EXIST";
+	SharedPreferences sp;
+	final String DB_VER = "DB_VERSION";
+	int dbVersion;
 
 	public JSONParser(Context context, JSONObject jObject) {
 		this.jObject = jObject;
 		this.context = context;
+		sp = PreferenceManager
+				.getDefaultSharedPreferences(context);
 	}
 
 	public void Parser() {
       
 		DBA = new DataBaseAdapter(context);
 		DBA.open();
-		DBA.delete();
+		//DBA.delete();
 		daoObj = new DAOObject();
 		try {
+			dbVersion = jObject.getInt("version");
 			JSONArray jsonArray = jObject.getJSONArray("quotes");
-
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject elem = jsonArray.getJSONObject(i);
 				daoObj.setGenre(elem.getString("genre"));
@@ -50,5 +56,6 @@ public class JSONParser {
 			e.printStackTrace();
 		}
 		DBA.close();
+		sp.edit().putInt(DB_VER, dbVersion);
 	}
 }

@@ -14,6 +14,14 @@ public class DataBaseAdapter {
 			+ " id integer,"
 			+ " body text,"
 			+ " favorite integer);";
+	
+	static final String DATABASE_CFG_CREATE = "create table  cfg (_id integer primary key autoincrement,"
+			+ " vers text,"
+			+ " num text,"
+			+ " date text,"
+			+ " link text);";
+
+
 	// Variable to hold the database instance
 	public SQLiteDatabase db;
 	// Context of the application using the database.
@@ -52,14 +60,39 @@ public class DataBaseAdapter {
 		// Toast.makeText(context, "Reminder Is Successfully Saved",
 		// Toast.LENGTH_LONG).show();
 	}
+	
+	public void insertEntryCfg(DAOObjectCFG daoObj) {
+		ContentValues cv = new ContentValues();
+		// Assign values for each row.
+		cv.put("vers", daoObj.getVers());
+		cv.put("num", daoObj.getNum());
+		cv.put("date", daoObj.getDate());
+		cv.put("link", daoObj.getLink());
+
+		// Insert the row into your table
+		db.insert("cfg", null, cv);
+		// Toast.makeText(context, "Reminder Is Successfully Saved",
+		// Toast.LENGTH_LONG).show();
+	}
 
 	public int delete() {
 		db.delete("quote", null, null);
 		return 0;
 	}
+	
+	public int deleteCfg() {
+		db.delete("cfg", null, null);
+		return 0;
+	}
 
 	public Cursor getCursor() {
 		Cursor cursor = db.query("quote", null, null, null, null, null, null);
+
+		return cursor;
+	}
+	
+	public Cursor getCursorCfg() {
+		Cursor cursor = db.query("cfg", null, null, null, null, null, null);
 
 		return cursor;
 	}

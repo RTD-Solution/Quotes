@@ -27,7 +27,9 @@ class DBQuotes extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase _db) {
 		// создаем таблицу с полями
+		_db.execSQL(DataBaseAdapter.DATABASE_CFG_CREATE);
 		_db.execSQL(DataBaseAdapter.DATABASE_CREATE);
+		
 	}
 
 	@Override

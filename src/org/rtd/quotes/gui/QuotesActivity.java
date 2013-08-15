@@ -153,12 +153,12 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 
     }
 
-    @Override
+   @Override
     protected void onApplyThemeResource(Theme theme, int resid, boolean first) {
 	// TODO Auto-generated method stub
-	startActivity(this.getIntent().setFlags(
+/*	startActivity(this.getIntent().setFlags(
 		Intent.FLAG_ACTIVITY_NO_ANIMATION));
-	finish();
+	finish();*/
 	super.onApplyThemeResource(theme, resid, first);
     }
 

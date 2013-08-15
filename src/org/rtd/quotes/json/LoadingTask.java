@@ -35,7 +35,10 @@ public class LoadingTask extends AsyncTask<String, String, Integer> {
 	protected Integer doInBackground(String... params) {
 	//	Log.i("Tutorial", "Starting task with url: "+params[0]);
 		if(resourcesDontAlreadyExist()){
-			downloadResources(params[0]);
+			for(String str: params)
+				downloadResources(str);
+			//downloadResources(params[0]);
+			//downloadResources(params[1]);
 		}
 		// Perhaps you want to return something to your post execute
 		return 1234;
