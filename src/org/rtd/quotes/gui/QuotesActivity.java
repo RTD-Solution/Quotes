@@ -6,7 +6,6 @@ import org.rtd.quotes.gui.adapter.ViewPagerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources.Theme;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
@@ -153,13 +152,19 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 
     }
 
-   @Override
-    protected void onApplyThemeResource(Theme theme, int resid, boolean first) {
+    @Override
+    protected void onActivityResult(int arg0, int arg1, Intent arg2) {
 	// TODO Auto-generated method stub
-/*	startActivity(this.getIntent().setFlags(
+	SharedPreferences sp = PreferenceManager
+		.getDefaultSharedPreferences(getApplicationContext());
+	if (sp.getString("theme_style", "Темная").contains("Темная"))
+	    this.setTheme(R.style.Theme_Sherlock);
+	else
+	    this.setTheme(R.style.Theme_Sherlock_Light);
+	startActivity(this.getIntent().setFlags(
 		Intent.FLAG_ACTIVITY_NO_ANIMATION));
-	finish();*/
-	super.onApplyThemeResource(theme, resid, first);
+	finish();
+	super.onActivityResult(arg0, arg1, arg2);
     }
 
 }
