@@ -12,7 +12,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -24,8 +23,9 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 	com.actionbarsherlock.ActionBarSherlock.OnOptionsItemSelectedListener {
 
     Context context;
+    String currentTheme;
     final String LOG_TAG = "myLogs";
-    LinearLayout lay1, lay2;
+    // LinearLayout lay1, lay2;
     ViewPager pager;
     Tab tab;
 
@@ -56,10 +56,13 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 	SharedPreferences sp = PreferenceManager
 		.getDefaultSharedPreferences(getApplicationContext());
 
-	if (sp.getString("theme_style", "Темная").contains("Темная"))
+	if (sp.getString("theme_style", "Темная").contains("Темная")) {
 	    this.setTheme(R.style.Theme_Sherlock);
-	else
+	    currentTheme = "Темная";
+	} else {
 	    this.setTheme(R.style.Theme_Sherlock_Light);
+	    currentTheme = "Светлая";
+	}
 
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.main);
@@ -68,7 +71,7 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 
 	FragmentManager fm = getSupportFragmentManager();
 
-	lay1 = (LinearLayout) findViewById(R.id.lay1);
+	// lay1 = (LinearLayout) findViewById(R.id.lay1);
 
 	context = getSupportActionBar().getThemedContext();
 
@@ -140,31 +143,28 @@ public class QuotesActivity extends SherlockFragmentActivity implements
 
     @Override
     public void onResume() {
-	SharedPreferences sp = PreferenceManager
-		.getDefaultSharedPreferences(getApplicationContext());
 
-	if (sp.getString("theme_style", "Темная").contains("Темная"))
-	    this.setTheme(R.style.Theme_Sherlock);
-	else
-	    this.setTheme(R.style.Theme_Sherlock_Light);
+	reload();
 
 	super.onResume();
 
     }
 
-    @Override
-    protected void onActivityResult(int arg0, int arg1, Intent arg2) {
-	// TODO Auto-generated method stub
+    public void reload() {
+
 	SharedPreferences sp = PreferenceManager
-		.getDefaultSharedPreferences(getApplicationContext());
-	if (sp.getString("theme_style", "Темная").contains("Темная"))
-	    this.setTheme(R.style.Theme_Sherlock);
-	else
-	    this.setTheme(R.style.Theme_Sherlock_Light);
-	startActivity(this.getIntent().setFlags(
-		Intent.FLAG_ACTIVITY_NO_ANIMATION));
-	finish();
-	super.onActivityResult(arg0, arg1, arg2);
+		.getDefaultSharedPreferences(context);
+	if (!sp.getString("theme_style", "Темная").equals(
+		currentTheme.toString())) {
+	    if (sp.getString("theme_style", "Темная").contains("Темная"))
+		this.setTheme(R.style.Theme_Sherlock);
+	    else
+		this.setTheme(R.style.Theme_Sherlock_Light);
+
+	    Intent intent = getIntent();
+	    finish();
+	    startActivity(intent);
+	}
     }
 
 }

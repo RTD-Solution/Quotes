@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
@@ -11,15 +12,18 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:orientation="vertical" >
-
-	        <TextView
+ 
+	        <org.rtd.quotes.component.SwitchableTextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_margin="10dp"
 	            android:textSize="18sp"
-	            android:text="@string/strHelp" />
+	            android:text="@string/strHelp"
+	            foo:customFont="SegoeWP-Semibold.ttf" > 
+	            
+	        </org.rtd.quotes.component.SwitchableTextView>
 
-	        <TextView
+	        <org.rtd.quotes.component.SwitchableTextView
 	            android:id="@+id/help_tv_developer"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"

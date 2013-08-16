@@ -20,6 +20,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements
 	OnSharedPreferenceChangeListener {
 
     Context context;
+    String currentTheme;
     final String LOG_TAG = "myLogs";
     LinearLayout lay1, lay2;
 
@@ -38,10 +39,13 @@ public class SettingsActivity extends SherlockPreferenceActivity implements
 	SharedPreferences sp = PreferenceManager
 		.getDefaultSharedPreferences(getApplicationContext());
 
-	if (sp.getString("theme_style", "Темная").contains("Темная"))
+	if (sp.getString("theme_style", "Темная").contains("Темная")) {
 	    this.setTheme(R.style.Theme_Sherlock);
-	else
+	    currentTheme = "Темная";
+	} else {
 	    this.setTheme(R.style.Theme_Sherlock_Light);
+	    currentTheme = "Светлая";
+	}
 
 	super.onCreate(savedInstanceState);
 	// setContentView(R.layout.main);
@@ -82,28 +86,40 @@ public class SettingsActivity extends SherlockPreferenceActivity implements
     public void onSharedPreferenceChanged(SharedPreferences arg0, String arg1) {
 	// TODO Auto-generated method stub
 	if (arg1.equals("theme_style")) {
-	    if (arg0.getString("theme_style", "Темная").contains("Темная"))
-		getApplicationContext().setTheme(R.style.Theme_Sherlock);
-	    else
-		getApplicationContext().setTheme(R.style.Theme_Sherlock_Light);
-	    this.getIntent().addFlags(
-		    Intent.FLAG_ACTIVITY_CLEAR_TOP
-			    | Intent.FLAG_ACTIVITY_NO_ANIMATION);
-	    this.startActivity(this.getIntent());
+	    if (!arg0.getString("theme_style", "Темная").equals(currentTheme)) {
+		if (arg0.getString("theme_style", "Темная").contains("Темная"))
+		    getApplicationContext().setTheme(R.style.Theme_Sherlock);
+		else
+		    getApplicationContext().setTheme(
+			    R.style.Theme_Sherlock_Light);
+		// this.getIntent().addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		// getIntent().setFlags(0);
+
+		// this.startActivity(this.getIntent());
+		// this.finish();
+
+		Intent intent = getIntent();
+		overridePendingTransition(0, 0);
+		finish();
+
+		overridePendingTransition(0, 0);
+		startActivity(intent);
+
+	    }
 	}
     }
 
-    @Override
-    public void onResume() {
-	SharedPreferences sp = PreferenceManager
-		.getDefaultSharedPreferences(getApplicationContext());
-
-	if (sp.getString("theme_style", "Темная").contains("Темная"))
-	    this.setTheme(R.style.Theme_Sherlock);
-	else
-	    this.setTheme(R.style.Theme_Sherlock_Light);
-
-	super.onResume();
-
-    }
+    // @Override
+    // public void onResume() {
+    // SharedPreferences sp = PreferenceManager
+    // .getDefaultSharedPreferences(getApplicationContext());
+    //
+    // if (sp.getString("theme_style", "Темная").contains("Темная"))
+    // this.setTheme(R.style.Theme_Sherlock);
+    // else
+    // this.setTheme(R.style.Theme_Sherlock_Light);
+    //
+    // super.onResume();
+    //
+    // }
 }
