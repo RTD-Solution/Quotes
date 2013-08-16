@@ -33,6 +33,7 @@ public class JSONParser {
 		daoObj = new DAOObject();
 		try {
 			dbVersion = jObject.getInt("version");
+			daoObj.setDate(jObject.getString("date"));
 			JSONArray jsonArray = jObject.getJSONArray("quotes");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject elem = jsonArray.getJSONObject(i);
@@ -56,6 +57,6 @@ public class JSONParser {
 			e.printStackTrace();
 		}
 		DBA.close();
-		sp.edit().putInt(DB_VER, dbVersion);
+		sp.edit().putInt(DB_VER, dbVersion).commit();
 	}
 }

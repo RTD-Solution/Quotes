@@ -9,6 +9,7 @@ public class DAOObject {
 	private int id;
 	private String body;
 	private int favorite;
+	private String date;
 
 	public int get_id() {
 		return _id;
@@ -57,6 +58,14 @@ public class DAOObject {
 	public void setFavorite(int favorite) {
 		this.favorite = favorite;
 	}
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 	public DAOObject retDAO(Cursor c, int num) {
 
@@ -71,6 +80,7 @@ public class DAOObject {
 		daoObj.setId(c.getInt(c.getColumnIndex("id")));
 		daoObj.setBody(c.getString(c.getColumnIndex("body")));
 		daoObj.setFavorite(c.getInt(c.getColumnIndex("favorite")));
+		daoObj.setDate(c.getString(c.getColumnIndex("date")));
 
 		return daoObj;
 	}

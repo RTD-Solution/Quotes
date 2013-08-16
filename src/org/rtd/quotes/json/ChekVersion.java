@@ -47,9 +47,9 @@ public class ChekVersion {
 		SharedPreferences sp = PreferenceManager
 				  .getDefaultSharedPreferences(context);
 		dbVersion = sp.getInt(DB_VER, 0);
-		DBA = new DataBaseAdapter(context);
+		DBA = new DataBaseAdapter(context);		
 		DBA.open();
-		
+		DBA.deleteCfg();
 		// Making HTTP request
 		try {
 			// defaultHttpClient

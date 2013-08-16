@@ -12,6 +12,7 @@ public class DataBaseAdapter {
 			+ " genre text,"
 			+ " name text,"
 			+ " id integer,"
+			+ " date text,"
 			+ " body text,"
 			+ " favorite integer);";
 	
@@ -53,6 +54,7 @@ public class DataBaseAdapter {
 		cv.put("genre", daoObj.getGenre());
 		cv.put("name", daoObj.getName());
 		cv.put("id", daoObj.getId());
+		cv.put("date", daoObj.getDate());
 		cv.put("body", daoObj.getBody());
 		cv.put("favorite", daoObj.getFavorite());
 		// Insert the row into your table
@@ -95,6 +97,14 @@ public class DataBaseAdapter {
 		Cursor cursor = db.query("cfg", null, null, null, null, null, null);
 
 		return cursor;
+	}
+	
+	public void setFavorite(String num, boolean mode ){
+		ContentValues cv = new ContentValues();
+		if(mode)
+		cv.put("favorite", "1");
+		else cv.put("favorite", "0");
+		db.update("quote", cv, "id = ?", new String[]{ num });
 	}
 
 	public void updateEntry(String userName, String password) {
