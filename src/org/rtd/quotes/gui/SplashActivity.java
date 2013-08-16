@@ -83,22 +83,6 @@ public class SplashActivity extends Activity implements
 				e.printStackTrace();
 			}
 
-			/*
-			 * savedText = Variables.getInstance().getVariable(DB_VER);
-			 * ChekVersion chekVer = new ChekVersion(this,
-			 * "http://doronda.ruskyhosting.ru/config.json"); String version =
-			 * "1"; try { version = chekVer.chekUrl(); } catch (JSONException e)
-			 * { // TODO Auto-generated catch block e.printStackTrace(); }
-			 * if(version.equals(savedText)){}else{
-			 * 
-			 * 
-			 * }
-			 */
-			// Скачиваем файл и обновляем БД
-			// final String[] srt = new String[10] ;
-			// srt[0]= "http://doronda.ruskyhosting.ru/cit.json";
-			// srt[1]= "http://doronda.ruskyhosting.ru/cit2.json";
-
 			DBA = new DataBaseAdapter(this);
 			DBA.open();
 			Cursor curCfg = DBA.getCursorCfg();
@@ -108,6 +92,7 @@ public class SplashActivity extends Activity implements
 			for (int i = 0; i < curCfg.getCount(); i++) {
 				dao = dao.retDAOcfg(curCfg, i);
 				dbVersion = sp.getInt(DB_VER, 0);
+				String str = dao.getVers();
 				if (Integer.valueOf(dao.getVers()) > dbVersion)
 					objects.add(dao.getLink());
 			}

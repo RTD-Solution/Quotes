@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -29,13 +30,15 @@ public class FavoritesFragment extends SherlockFragment implements
     ToggleButton tbFav;
     ListView list;
     DataBaseAdapter DBA;
+    View allQuotesView ;
+    List<DAOObject> objects;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	    Bundle savedInstanceState) {
 	// TODO Auto-generated method stub
 
-	View allQuotesView = inflater.inflate(R.layout.all_quotes_fragment,
+    	allQuotesView = inflater.inflate(R.layout.all_quotes_fragment,
 		container, false);
 
 	DBA = new DataBaseAdapter(allQuotesView.getContext());
@@ -44,13 +47,14 @@ public class FavoritesFragment extends SherlockFragment implements
 	Cursor c = DBA.getCursor();
 
 	DAOObject dao = new DAOObject();
-	final List<DAOObject> objects = new ArrayList<DAOObject>();
+	objects = new ArrayList<DAOObject>();
 	for (int i = 0; i < c.getCount(); i++) {
 	    dao = dao.retDAO(c, i);
+	    if(dao.getFavorite()==1)
 	    objects.add(dao);
 	}
 
-	objects.add(new DAOObject());
+	//objects.add(new DAOObject());
 
 	c.close();
 
@@ -117,4 +121,5 @@ public class FavoritesFragment extends SherlockFragment implements
 	// TODO Auto-generated method stub
 
     }
+
 }

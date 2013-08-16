@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -30,13 +32,14 @@ public class AllQuotesFragment extends SherlockFragment implements
     ToggleButton tbFav;
     ListView list;
     DataBaseAdapter DBA;
+    View allQuotesView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	    Bundle savedInstanceState) {
 	// TODO Auto-generated method stub
 
-	View allQuotesView = inflater.inflate(R.layout.all_quotes_fragment,
+	allQuotesView = inflater.inflate(R.layout.all_quotes_fragment,
 		container, false);
 
 	DBA = new DataBaseAdapter(allQuotesView.getContext());
@@ -51,7 +54,7 @@ public class AllQuotesFragment extends SherlockFragment implements
 	    objects.add(dao);
 	}
 
-	objects.add(new DAOObject());
+//	objects.add(new DAOObject());
 
 	c.close();
 
@@ -81,10 +84,14 @@ public class AllQuotesFragment extends SherlockFragment implements
 		 * intent.setClass(QuotesActivity.this, InfoActivity.class);
 		 * startActivity(intent);
 		 */
+	    	TextView tv = (TextView) arg1.findViewById(R.id.txtId);
+	    	 Toast.makeText(allQuotesView.getContext(), tv.getText(),
+					    Toast.LENGTH_LONG).show();
+	    	//DBA.setFavorite((String) tv.getText());
 	    }
 
 	});
-
+DBA.close();
 	return allQuotesView;
     }
 

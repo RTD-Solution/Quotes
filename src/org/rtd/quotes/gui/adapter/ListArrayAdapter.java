@@ -3,6 +3,7 @@ package org.rtd.quotes.gui.adapter;
 import java.util.List;
 
 import org.rtd.quotes.database.DAOObject;
+import org.rtd.quotes.database.DataBaseAdapter;
 import org.rtd.quotes.gui.R;
 
 import android.annotation.SuppressLint;
@@ -23,14 +24,14 @@ import android.widget.ToggleButton;
 public class ListArrayAdapter extends ArrayAdapter<DAOObject> {
     private LayoutInflater mInflater;
     Context context;
-
+    DataBaseAdapter DBA;
     public ListArrayAdapter(Activity a, Context context,
 	    int textViewResourceId, List<DAOObject> objects) {
 	super(context, textViewResourceId, objects);
 	this.context = context;
 	mInflater = (LayoutInflater) this.getContext().getSystemService(
 		Context.LAYOUT_INFLATER_SERVICE);
-	// evInf = new EventInfo();
+
 
     }
 
@@ -54,28 +55,32 @@ public class ListArrayAdapter extends ArrayAdapter<DAOObject> {
 		    @Override
 		    public void onCheckedChanged(CompoundButton buttonView,
 			    boolean isChecked) {
-
+		    	DBA = new DataBaseAdapter(context);
+		    	DBA.open();
 			if (isChecked) {
 			    holder.tbFavorite.setChecked(true);
-			    Toast.makeText(getContext(), "true",
-				    Toast.LENGTH_LONG).show();
+/*			    Toast.makeText(getContext(), holder.txtId.getText(),
+				    Toast.LENGTH_LONG).show();*/
 			    holder.tbFavorite
 				    .setBackgroundResource(android.R.drawable.btn_star_big_on);
+			   DBA.setFavorite((String) holder.txtId.getText(), true);
 			} else {
 			    holder.tbFavorite.setChecked(false);
-			    Toast.makeText(getContext(), "false",
-				    Toast.LENGTH_LONG).show();
+/*			    Toast.makeText(getContext(), "false",
+				    Toast.LENGTH_LONG).show();*/
 			    holder.tbFavorite
 				    .setBackgroundResource(android.R.drawable.btn_star_big_off);
+			    DBA.setFavorite((String) holder.txtId.getText(), false);
 			}
+			DBA.close();
 		    }
 		});
 	// holder.itemLay = (LinearLayout) row.findViewById(R.id.imgLay);
 	holder.mainLay = (RelativeLayout) row.findViewById(R.id.mainLay);
 
 	holder.txtTypeName.setText(daoObj.getBody());
-	holder.txtId.setText(String.valueOf(daoObj.getId()));
-	holder.txtDate.setText("1111.11.11");
+	holder.txtId.setText(String.valueOf(daoObj.getId())+" ");
+	holder.txtDate.setText(daoObj.getDate());
 
 	if (daoObj.getFavorite() == 1)
 	    holder.tbFavorite
